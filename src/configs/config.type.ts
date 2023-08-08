@@ -19,11 +19,6 @@ export type DatabaseConfig = {
   username?: string
   synchronize?: boolean
   maxConnections: number
-  sslEnabled?: boolean
-  rejectUnauthorized?: boolean
-  ca?: string
-  key?: string
-  cert?: string
 }
 
 export type AllConfigType = {
