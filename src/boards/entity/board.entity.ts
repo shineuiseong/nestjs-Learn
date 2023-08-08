@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
-import { BoardStatus } from './board-status.enum'
+import { BoardStatus } from '../board-status.enum'
 
 @Entity()
 export class Board extends BaseEntity {
@@ -12,6 +12,6 @@ export class Board extends BaseEntity {
   @Column('varchar')
   description: string
 
-  @Column('varchar')
+  @Column({ type: 'varchar', default: BoardStatus.PUBLIC })
   status: BoardStatus
 }
