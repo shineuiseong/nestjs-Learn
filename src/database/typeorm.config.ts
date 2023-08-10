@@ -1,11 +1,11 @@
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm'
 import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
-import { AllConfigType } from '../configs/config.type'
+import { AppConfigType } from '../configs/config.type'
 
 @Injectable()
 export class TypeormConfig implements TypeOrmOptionsFactory {
-  constructor(private configService: ConfigService<AllConfigType>) {}
+  constructor(private configService: ConfigService<AppConfigType>) {}
 
   createTypeOrmOptions(): TypeOrmModuleOptions {
     return {

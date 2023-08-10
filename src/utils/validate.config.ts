@@ -2,21 +2,21 @@ import { plainToClass } from 'class-transformer'
 import { validateSync } from 'class-validator'
 import { ClassConstructor } from 'class-transformer/types/interfaces'
 
-function validateConfig<T extends object>(
+function ValidateConfig<T extends object>(
   config: Record<string, unknown>,
   envVariablesClass: ClassConstructor<T>
 ) {
-  const validatedConfig = plainToClass(envVariablesClass, config, {
+  const ValidateConfig = plainToClass(envVariablesClass, config, {
     enableImplicitConversion: true
   })
-  const errors = validateSync(validatedConfig, {
+  const errors = validateSync(ValidateConfig, {
     skipMissingProperties: false
   })
 
   if (errors.length > 0) {
     throw new Error(errors.toString())
   }
-  return validatedConfig
+  return ValidateConfig
 }
 
-export default validateConfig
+export default ValidateConfig

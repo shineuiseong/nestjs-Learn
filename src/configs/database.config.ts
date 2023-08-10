@@ -1,6 +1,6 @@
 import { registerAs } from '@nestjs/config'
 import { DatabaseConfig } from './config.type'
-import validateConfig from '../utils/validate.config'
+import ValidateConfig from '../utils/validate.config'
 import {
   IsOptional,
   IsInt,
@@ -55,7 +55,7 @@ class EnvironmentValidator {
 }
 
 export default registerAs<DatabaseConfig>('database', () => {
-  validateConfig(process.env, EnvironmentValidator)
+  ValidateConfig(process.env, EnvironmentValidator)
   return {
     url: process.env.DATABASE_URL,
     type: process.env.DATABASE_TYPE,

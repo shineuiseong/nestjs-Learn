@@ -21,7 +21,7 @@ export type DatabaseConfig = {
   maxConnections: number
 }
 
-export type AllConfigType = {
+export type AppConfigType = {
   app: AppConfig
   database: DatabaseConfig
 }

@@ -6,7 +6,7 @@ import {
 import { ConfigService } from '@nestjs/config'
 import { NestFactory, Reflector } from '@nestjs/core'
 import { useContainer } from 'class-validator'
-import { AllConfigType } from './configs/config.type'
+import { AppConfigType } from './configs/config.type'
 import validationOptions from './utils/validate.global.options'
 import { AppModule } from './app.module'
 
@@ -18,7 +18,7 @@ async function bootstrap() {
   useContainer(app.select(AppModule), { fallbackOnErrors: true })
 
   // TODO: ConfigService를 통해 설정 값을 가져옴
-  const configService = app.get(ConfigService<AllConfigType>)
+  const configService = app.get(ConfigService<AppConfigType>)
 
   // TODO: 애플리케이션의 종료 시그널에 대한 처리를 활성화 (메모리 누수 방지)
   app.enableShutdownHooks()
