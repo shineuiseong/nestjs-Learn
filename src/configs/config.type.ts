@@ -21,7 +21,15 @@ export type DatabaseConfig = {
   maxConnections: number
 }
 
+export type AuthConfig = {
+  accessSecret: string
+  accessExpires: string
+  refreshSecret: string
+  refreshExpires: string
+}
+
 export type AppConfigType = {
   app: AppConfig
   database: DatabaseConfig
+  auth: AuthConfig
 }
