@@ -1,21 +1,22 @@
 import {
-  IsEmail,
+  Validate,
   IsNotEmpty,
-  Matches,
-  MaxLength,
   MinLength,
-  Validate
+  MaxLength,
+  Matches,
+  IsEmail
 } from 'class-validator'
-import { IsNotExist } from '@/utils/validators/isNotEmpty.validator'
+import { IsExist } from '@/utils/validators/isEmpty.validator'
 
-export class AuthSignupDto {
+export class AuthSigninDto {
   @IsNotEmpty()
-  @Validate(IsNotExist, ['User'], {
-    message: 'email Already Exists'
-  })
+  // @Validate(IsExist, ['User'], {
+  //   message: 'emailNotExists'
+  // })
   @IsEmail()
   email: string
 
+  @IsNotEmpty()
   @MinLength(6)
   @MaxLength(16)
   @Matches(

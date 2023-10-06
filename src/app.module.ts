@@ -8,9 +8,9 @@ import { DataSource, DataSourceOptions } from 'typeorm'
 import { TypeormConfig } from './database/typeorm.config'
 import { AuthModule } from './auth/auth.module'
 import { UsersModule } from '@/users/users.module'
-import { TokenModule } from './token/token.module'
 import process from 'process'
 import path from 'path'
+import { PasswordModule } from '@/auth/password/password.module'
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -34,7 +34,7 @@ import path from 'path'
     }),
     AuthModule,
     UsersModule,
-    TokenModule
+    PasswordModule
   ]
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 export enum AuthProviderEnum {
-  email = 'email',
-  kakao = 'kakao',
-  google = 'google'
+  email = 0,
+  kakao = 1,
+  google = 2
 }

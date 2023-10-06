@@ -1,16 +1,8 @@
-import {
-  BadRequestException,
-  Body,
-  Controller,
-  HttpCode,
-  HttpStatus,
-  Post,
-  Res
-} from '@nestjs/common'
+import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common'
 import { AuthService } from '@/auth/auth.service'
 import { AuthSignupDto } from '@/auth/dto/auth-signup.dto'
 import { User } from '@/users/entities/user.entity'
-import { Response } from 'express'
+import { AuthSigninDto } from '@/auth/dto/auth-signin.dto'
 
 @Controller('auth')
 export class AuthController {
@@ -18,20 +10,12 @@ export class AuthController {
 
   @Post('/signup')
   @HttpCode(HttpStatus.OK)
-  async signup(
-    @Body() createUserDto: AuthSignupDto,
-    @Res() res: Response
-  ): Promise<void> {
-    try {
-      const user = await this.service.signUp(createUserDto)
-      res.status(HttpStatus.OK).json({
-        id: user.id,
-        email: user.email,
-        name: user.name
-      })
-    } catch (error) {
-      console.error('Error during signup:', error)
-      throw new BadRequestException('Invalid input data')
-    }
+  async signup(@Body() createUserDto: AuthSignupDto) {
+    return await this.service.signUp(createUserDto)
+  }
+  @Post('/signin')
+  @HttpCode(HttpStatus.OK)
+  async signIn(@Body() signInDto: AuthSigninDto) {
+    return await this.service.signIn(signInDto)
   }
 }
