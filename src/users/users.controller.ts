@@ -9,9 +9,14 @@ export class UsersController {
   @Post()
   @HttpCode(200)
   async createUser(@Body() createUser: CreateUserDto) {
-    const user = await this.usersService.create(createUser)
-    return {
-      id: user.id
+    try {
+      const user = await this.usersService.createUser(createUser)
+      if (user) {
+        console.log(user)
+        return user.id
+      }
+    } catch (error) {
+      throw new Error(error)
     }
   }
 }

@@ -12,7 +12,7 @@ export class UsersRepository extends Repository<User> {
   }
 
   // TODO: CREATE USER
-  async createUser(createUser: CreateUserDto): Promise<User> {
+  async createData(createUser: CreateUserDto): Promise<User> {
     try {
       const user = this.create(createUser)
       return await this.save(user)
@@ -23,7 +23,7 @@ export class UsersRepository extends Repository<User> {
   }
 
   // TODO: FIND USER ONE
-  async findOneUser(fields: EntityWhere<User>): Promise<NullableType<User>> {
+  async selectOne(fields: EntityWhere<User>): Promise<NullableType<User>> {
     try {
       return await this.findOne({ where: fields })
     } catch (error) {
@@ -33,7 +33,7 @@ export class UsersRepository extends Repository<User> {
   }
 
   // TODO: UPDATE USER DATA
-  async updateUser(id: User['id'], payload: DeepPartial<User>): Promise<User> {
+  async updateData(id: User['id'], payload: DeepPartial<User>): Promise<User> {
     try {
       const updatedUser = this.create({ id, ...payload })
       return await this.save(updatedUser)
@@ -44,7 +44,7 @@ export class UsersRepository extends Repository<User> {
   }
 
   // TODO: DELETE USER
-  async deleteUser(id: User['id']): Promise<void> {
+  async deleteData(id: User['id']): Promise<void> {
     try {
       await this.softDelete(id)
     } catch (error) {
