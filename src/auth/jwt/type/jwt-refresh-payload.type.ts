@@ -1,7 +1,5 @@
-import { Token } from '@/token/entities/token.entity'
-
 export type JwtRefreshPayloadType = {
-  tokenId: Token['id']
+  userId: string
   iat: number
   exp: number
 }
